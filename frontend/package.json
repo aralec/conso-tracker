@@ -1,0 +1,15 @@
+{
+  "name": "wails-templ-hmtx-project",
+  "version": "0.0.0",
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "vite": "^5.4.1"
+  },
+  "private": true,
+  "scripts": {
+    "dev": "bun -b --hot vite",
+    "build": "bun -b vite build",
+    "preview": "bun -b vite preview"
+  },
+  "author": "Arnaud"
+}

@@ -1,0 +1,39 @@
+package views
+
+import (
+    "strconv"
+
+    "wails-templ-hmtx-project/src/external/components"
+)
+
+templ CounterView(state int) {
+    @count(state)
+    @actions()
+}
+
+templ count(state int) {
+    <div>
+        State :
+        <div id="count-value">
+            { strconv.Itoa(state) }
+        </div>
+    </div>
+}
+
+templ actions() {
+    // Components bellow used for demonstration purposes only :
+    @components.Button(
+        "",
+        "/counter/increment",
+        "#count-value",
+        "POST",
+        "+",
+    )
+    @components.Button(
+        "",
+        "/counter/decrement",
+        "#count-value",
+        "POST",
+        "-",
+    )
+}
