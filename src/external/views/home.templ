@@ -1,0 +1,12 @@
+package views
+
+import "conso-tracker/src/external/components/button"
+
+templ Home() {
+    <div>
+       <p>Hello World!</p>
+       @components.Button{Label: "Click Me!",
+            OnClick: &components.OnClick{}
+        }.HTML()
+    </div>
+}

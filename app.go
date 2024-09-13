@@ -1,9 +1,9 @@
 package main
 
 import (
+	"conso-tracker/src/cmd/render"
 	"context"
 	"net/http"
-	"wails-templ-hmtx-project/src/cmd/render"
 
 	"github.com/go-chi/chi/v5"
 )

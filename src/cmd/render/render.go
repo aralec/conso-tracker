@@ -1,7 +1,7 @@
 package render
 
 import (
-	"wails-templ-hmtx-project/src/internal/adapters/handlers"
+	"conso-tracker/src/internal/adapters/handlers"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
@@ -13,12 +13,8 @@ func GetRenderingMux() *chi.Mux {
 	r.Use(middleware.Logger)
 	r.Use(middleware.Recoverer)
 
-	r.Route("/counter", func(r chi.Router) {
-		cs := handlers.NewCounterHandler()
-		r.Get("/", cs.ServeCounterView)
-		r.Post("/increment", cs.Increment)
-		r.Post("/decrement", cs.Decrement)
-	})
+	homeHandler := handlers.NewHomeHandler()
+	r.Get("/drop-file", homeHandler.Home)
 
 	return r
 }

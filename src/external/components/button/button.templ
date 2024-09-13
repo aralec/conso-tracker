@@ -1,0 +1,28 @@
+package components
+
+import "net/http"
+
+templ (btn Button) HTML() {
+	<button
+ 		type="submit"
+
+ 		if btn.Class != "" {
+            class={ btn.Class }
+        } else {
+            class="button"
+        }
+
+        if btn.OnClick != nil {
+            hx-target={btn.OnClick.HxTarget}
+            hx-trigger={btn.OnClick.HxTrigger}
+            hx-swap={btn.OnClick.HxSwap}
+            if btn.OnClick.Method == http.MethodGet {
+			    hx-get={ btn.OnClick.HxUrl }
+            }
+            if btn.OnClick.Method == http.MethodPost {
+                hx-post={ btn.OnClick.HxUrl }
+            }
+        }
+
+	>{ btn.Label }</button>
+}

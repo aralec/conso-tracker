@@ -1,8 +1,8 @@
 package main
 
 import (
+	"conso-tracker/src/cmd/render"
 	"net/http"
-	"wails-templ-hmtx-project/src/cmd/render"
 )
 
 // main runs the core application (server-side code + templating)

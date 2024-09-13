@@ -1,4 +1,4 @@
-module wails-templ-hmtx-project
+module conso-tracker
 
 go 1.21
 
