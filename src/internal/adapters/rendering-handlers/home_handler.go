@@ -1,4 +1,4 @@
-package handlers
+package rendering
 
 import (
 	"conso-tracker/src/external/views"
