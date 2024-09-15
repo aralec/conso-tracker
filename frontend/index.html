@@ -1,19 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>Wails HTMX Templ App</title>
-  <script src="https://unpkg.com/htmx.org@1.9.6"></script>
-  <link rel="stylesheet" href="src/assets/css/app.css">
-</head>
-
-<body>
-  <div id="app">
-    <div class="container">
-      <button class="button is-centered" id="initial" hx-get="/drop-file" hx-target="#initial" hx-swap="outerHTML">Importer</button>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Conso-Tracker</title>
+    <script src="https://unpkg.com/htmx.org@1.9.6"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="src/assets/css/app.css">
+  </head>
+  <body>
+    <div id="app">
+      <div class="container">
+        <button
+          id="initial"
+          class="button is-centered"
+          hx-get="/drop-file"
+          hx-target="#initial"
+          hx-swap="outerHTML"
+        >
+          Importer
+        </button>
+      </div>
     </div>
-  </div>
-</body>
+  </body>
 </html>

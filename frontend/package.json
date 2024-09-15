@@ -11,5 +11,7 @@
     "build": "bun -b vite build",
     "preview": "bun -b vite preview"
   },
-  "author": "Arnaud"
+  "author": "Arnaud",
+  "dependencies": {
+  }
 }

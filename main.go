@@ -18,7 +18,7 @@ var assets embed.FS
 //go:embed build/appicon.png
 var icon []byte
 var version = "0.0.0"
-var projectName = "Template"
+var projectName = "ConsoTracker"
 var appName = projectName + " - " + version
 
 func main() {
@@ -28,8 +28,8 @@ func main() {
 	// Create application with options
 	err := wails.Run(&options.App{
 		Title:             appName,
-		Width:             300,
-		Height:            200,
+		Width:             950,
+		Height:            600,
 		MinWidth:          300,
 		MinHeight:         200,
 		MaxWidth:          1280,

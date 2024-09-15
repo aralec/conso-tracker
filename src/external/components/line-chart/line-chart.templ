@@ -1,0 +1,17 @@
+package components
+
+// HTML returns the HTML template for the Chart component
+templ (c Chart) HTML() {
+    <div>
+        <canvas id={c.ElementID} width="400" height="200"></canvas>
+    </div>
+    @templ.JSONScript("chart-data", c)
+    @newChart(c)
+}
+
+// newChart renders the <script> tag that will be used to render the chart
+script newChart(c Chart) {
+    const chartData = JSON.parse(document.getElementById('chart-data').textContent);
+    const ctx = document.getElementById(chartData.elementID);
+    new Chart(ctx, chartData.data);
+}

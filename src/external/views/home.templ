@@ -1,12 +1,16 @@
 package views
 
-import "conso-tracker/src/external/components/button"
+import (
+    btn "conso-tracker/src/external/components/button"
+    lc "conso-tracker/src/external/components/line-chart"
+)
 
-templ Home() {
+templ Home(c lc.Chart) {
     <div>
        <p>Hello World!</p>
-       @components.Button{Label: "Click Me!",
-            OnClick: &components.OnClick{}
+        @btn.Button{Label: "Click Me!",
+            OnClick: &btn.OnClick{},
         }.HTML()
+        @c.HTML()
     </div>
 }
