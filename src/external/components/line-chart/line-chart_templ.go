@@ -8,6 +8,7 @@ package components
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
+// HTML returns the HTML template for the Chart component
 func (c Chart) HTML() templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
@@ -26,14 +27,14 @@ func (c Chart) HTML() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p>Test</p><div><canvas id=\"")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div><canvas id=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var2 string
 		templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(c.ElementID)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `src/external/components/line-chart/line-chart.templ`, Line: 7, Col: 31}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `src/external/components/line-chart/line-chart.templ`, Line: 6, Col: 31}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 		if templ_7745c5c3_Err != nil {
@@ -47,7 +48,7 @@ func (c Chart) HTML() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = graph(c).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = newChart().Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -55,14 +56,16 @@ func (c Chart) HTML() templ.Component {
 	})
 }
 
-func graph(c Chart) templ.ComponentScript {
+// newChart renders the <script> tag that will be used to display the Chart.js visual.
+// The code within the brackets is JS.
+func newChart() templ.ComponentScript {
 	return templ.ComponentScript{
-		Name: `__templ_graph_ff09`,
-		Function: `function __templ_graph_ff09(c){const chartData = JSON.parse(document.getElementById('chart-data').textContent);
+		Name: `__templ_newChart_ff09`,
+		Function: `function __templ_newChart_ff09(){const chartData = JSON.parse(document.getElementById('chart-data').textContent);
     const ctx = document.getElementById(chartData.elementID);
     new Chart(ctx, chartData.data);
 }`,
-		Call:       templ.SafeScript(`__templ_graph_ff09`, c),
-		CallInline: templ.SafeScriptInline(`__templ_graph_ff09`, c),
+		Call:       templ.SafeScript(`__templ_newChart_ff09`),
+		CallInline: templ.SafeScriptInline(`__templ_newChart_ff09`),
 	}
 }

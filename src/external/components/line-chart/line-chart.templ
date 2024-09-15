@@ -6,11 +6,12 @@ templ (c Chart) HTML() {
         <canvas id={c.ElementID} width="400" height="200"></canvas>
     </div>
     @templ.JSONScript("chart-data", c)
-    @newChart(c)
+    @newChart()
 }
 
-// newChart renders the <script> tag that will be used to render the chart
-script newChart(c Chart) {
+// newChart renders the <script> tag that will be used to display the Chart.js visual.
+// The code within the brackets is JS.
+script newChart() {
     const chartData = JSON.parse(document.getElementById('chart-data').textContent);
     const ctx = document.getElementById(chartData.elementID);
     new Chart(ctx, chartData.data);
