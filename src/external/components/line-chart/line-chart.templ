@@ -2,8 +2,8 @@ package components
 
 // HTML returns the HTML template for the Chart component
 templ (c Chart) HTML() {
-    <div>
-        <canvas id={c.ElementID} width="400" height="200"></canvas>
+    <div style="position: relative;">
+        <canvas id={c.ElementID}></canvas>
     </div>
     @templ.JSONScript("chart-data", c)
     @newChart()

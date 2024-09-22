@@ -1,0 +1,10 @@
+package layouts
+
+import "conso-tracker/src/external/components/navigation"
+
+templ Base() {
+    @navigation.Navigation()
+    <div class="mt-6 container is-fluid">
+        { children... }
+    </div>
+}

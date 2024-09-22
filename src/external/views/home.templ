@@ -3,14 +3,17 @@ package views
 import (
     btn "conso-tracker/src/external/components/button"
     lc "conso-tracker/src/external/components/line-chart"
+	"conso-tracker/src/external/views/layouts"
 )
 
-templ Home(c lc.Chart) {
-    <div>
-       <p>Hello World!</p>
-        @btn.Button{Label: "Click Me!",
-            OnClick: &btn.OnClick{},
-        }.HTML()
-        @c.HTML()
-    </div>
+templ Home(chart lc.Chart) {
+    @layouts.Base() {
+        <div>
+            <p>Hello World!</p>
+            @btn.Button{Label: "Click Me!",
+                OnClick: &btn.OnClick{},
+            }.HTML()
+            @chart.HTML()
+        </div>
+    }
 }

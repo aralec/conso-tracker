@@ -20,7 +20,7 @@ func (h *HomeHandler) Home(w http.ResponseWriter, r *http.Request) {
 			Data: components.Data{
 				Labels: []string{"January", "February", "March", "April", "May", "June"},
 				Datasets: []components.Dataset{
-					components.Dataset{
+					{
 						Label:       "My First dataset",
 						Data:        []float64{65, 59, 80, 81, 56, 55, 40},
 						Fill:        false,
