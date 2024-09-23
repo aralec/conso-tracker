@@ -1,22 +1,32 @@
 package navigation
 
 templ Navigation() {
-    <nav class="navbar is-fixed-top box-shadow" role="navigation">
+    <nav class={ "navbar is-fixed-top", templ.KV(boxShadow(), true)} role="navigation">
         <div class="navbar-brand">
-            <a class="navbar-item" href="#">Mon site</a>
+            <a class="navbar-item" href="#">Conso Tracker</a>
         </div>
         <div class="navbar-menu">
             <div class="navbar-start">
-                <div class="navbar-item">
-                    <a class="button is-primary" href="#">Accueil</a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">Fichier</a>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item">Importer</a>
+                    </div>
                 </div>
-                <div class="navbar-item">
-                    <a class="button is-info" href="#">À propos</a>
-                </div>
-                <div class="navbar-item">
-                    <a class="button is-warning" href="#">Contact</a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">Plus</a>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item">A propos</a>
+                        <a class="navbar-item">Contact</a>
+                        <hr class="navbar-divider">
+                        <a class="navbar-item">Signaler un bug</a>
+                    </div>
                 </div>
             </div>
         </div>
     </nav>
+}
+
+css boxShadow() {
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
 }

@@ -1,19 +1,22 @@
 package views
 
 import (
-    btn "conso-tracker/src/external/components/button"
-    lc "conso-tracker/src/external/components/line-chart"
-	"conso-tracker/src/external/views/layouts"
+    "conso-tracker/src/external/views/layouts"
 )
 
-templ Home(chart lc.Chart) {
+templ Home() {
     @layouts.Base() {
-        <div>
-            <p>Hello World!</p>
-            @btn.Button{Label: "Click Me!",
-                OnClick: &btn.OnClick{},
-            }.HTML()
-            @chart.HTML()
+        <div class={ homeContainer() }>
+            <div class="content is-centered">
+                <p style="font-style: italic">Aucun fichier importé</p>
+            </div>
         </div>
     }
+}
+
+css homeContainer() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }

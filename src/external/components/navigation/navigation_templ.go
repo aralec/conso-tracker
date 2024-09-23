@@ -26,10 +26,38 @@ func Navigation() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<nav class=\"navbar is-fixed-top box-shadow\" role=\"navigation\"><div class=\"navbar-brand\"><a class=\"navbar-item\" href=\"#\">Mon site</a></div><div class=\"navbar-menu\"><div class=\"navbar-start\"><div class=\"navbar-item\"><a class=\"button is-primary\" href=\"#\">Accueil</a></div><div class=\"navbar-item\"><a class=\"button is-info\" href=\"#\">À propos</a></div><div class=\"navbar-item\"><a class=\"button is-warning\" href=\"#\">Contact</a></div></div></div></nav>")
+		var templ_7745c5c3_Var2 = []any{"navbar is-fixed-top", templ.KV(boxShadow(), true)}
+		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var2...)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<nav class=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var3 string
+		templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(templ.CSSClasses(templ_7745c5c3_Var2).String())
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `src/external/components/navigation/navigation.templ`, Line: 1, Col: 0}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" role=\"navigation\"><div class=\"navbar-brand\"><a class=\"navbar-item\" href=\"#\">Conso Tracker</a></div><div class=\"navbar-menu\"><div class=\"navbar-start\"><div class=\"navbar-item has-dropdown is-hoverable\"><a class=\"navbar-link\">Fichier</a><div class=\"navbar-dropdown\"><a class=\"navbar-item\">Importer</a></div></div><div class=\"navbar-item has-dropdown is-hoverable\"><a class=\"navbar-link\">Plus</a><div class=\"navbar-dropdown\"><a class=\"navbar-item\">A propos</a> <a class=\"navbar-item\">Contact</a><hr class=\"navbar-divider\"><a class=\"navbar-item\">Signaler un bug</a></div></div></div></div></nav>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		return templ_7745c5c3_Err
 	})
+}
+
+func boxShadow() templ.CSSClass {
+	templ_7745c5c3_CSSBuilder := templruntime.GetBuilder()
+	templ_7745c5c3_CSSBuilder.WriteString(`box-shadow:0px 2px 6px rgba(0, 0, 0, 0.1);`)
+	templ_7745c5c3_CSSID := templ.CSSID(`boxShadow`, templ_7745c5c3_CSSBuilder.String())
+	return templ.ComponentCSSClass{
+		ID:    templ_7745c5c3_CSSID,
+		Class: templ.SafeCSS(`.` + templ_7745c5c3_CSSID + `{` + templ_7745c5c3_CSSBuilder.String() + `}`),
+	}
 }
