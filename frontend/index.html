@@ -12,13 +12,11 @@
     <div id="app">
       <button
         id="initial"
-        class="button is-centered"
         hx-get="/drop-file"
         hx-target="#initial"
-        hx-swap="outerHTML"
-      >
-        Importer
-      </button>
+        hx-trigger="load"
+        hx-swap="outerHTML transition:true swap:100"
+      ></button>
     </div>
   </body>
 </html>
