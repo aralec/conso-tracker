@@ -7,8 +7,8 @@ import (
 templ Home() {
     @layouts.Base() {
         <div class={ homeContainer() }>
-            <div class="content is-centered">
-                <p style="font-style: italic">Aucun fichier importé</p>
+            <div id="main-content" class="content is-centered">
+                <p class="is-italic">Aucun fichier importé</p>
             </div>
         </div>
     }
@@ -18,5 +18,5 @@ css homeContainer() {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 90vh;
 }

@@ -26,7 +26,7 @@ func Navigation() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		var templ_7745c5c3_Var2 = []any{"navbar is-fixed-top", templ.KV(boxShadow(), true)}
+		var templ_7745c5c3_Var2 = []any{"navbar is-fixed-top", boxShadow()}
 		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var2...)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -44,7 +44,7 @@ func Navigation() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" role=\"navigation\"><div class=\"navbar-brand\"><a class=\"navbar-item\" href=\"#\">Conso Tracker</a></div><div class=\"navbar-menu\"><div class=\"navbar-start\"><div class=\"navbar-item has-dropdown is-hoverable\"><a class=\"navbar-link\">Fichier</a><div class=\"navbar-dropdown\"><a class=\"navbar-item\">Importer</a></div></div><div class=\"navbar-item has-dropdown is-hoverable\"><a class=\"navbar-link\">Plus</a><div class=\"navbar-dropdown\"><a class=\"navbar-item\">A propos</a> <a class=\"navbar-item\">Contact</a><hr class=\"navbar-divider\"><a class=\"navbar-item\">Signaler un bug</a></div></div></div></div></nav>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" role=\"navigation\"><div class=\"navbar-brand\"><span class=\"navbar-item has-text-black has-text-weight-bold\"><i class=\"iconoir-reports\"></i> Conso Tracker</span></div><div class=\"navbar-menu\"><div class=\"navbar-start\"><div class=\"navbar-item has-dropdown is-hoverable\"><a class=\"navbar-link\">Fichier</a><div class=\"navbar-dropdown\"><a class=\"navbar-item\"><i class=\"iconoir-page-plus\"></i> Importer</a></div></div><div class=\"navbar-item has-dropdown is-hoverable\"><a class=\"navbar-link\">Plus</a><div class=\"navbar-dropdown\"><a class=\"navbar-item\"><i class=\"iconoir-open-book\"></i> A propos</a> <a class=\"navbar-item\"><i class=\"iconoir-mail\"></i> Contact</a><hr class=\"navbar-divider\"><a class=\"navbar-item\"><i class=\"iconoir-warning-triangle\"></i> Signaler un bug</a></div></div></div></div></nav>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
