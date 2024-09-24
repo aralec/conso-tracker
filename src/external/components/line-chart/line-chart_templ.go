@@ -60,12 +60,12 @@ func (c Chart) Component() templ.Component {
 // The code within the brackets is JS.
 func newChart() templ.ComponentScript {
 	return templ.ComponentScript{
-		Name: `__templ_newChart_ff09`,
-		Function: `function __templ_newChart_ff09(){const chartData = JSON.parse(document.getElementById('chart-data').textContent);
-    const ctx = document.getElementById(chartData.elementID);
+		Name: `__templ_newChart_d9bf`,
+		Function: `function __templ_newChart_d9bf(){const chartData = JSON.parse(htmx.find('#chart-data').textContent);
+    const ctx = htmx.find(chartData.elementID);
     new Chart(ctx, chartData.data);
 }`,
-		Call:       templ.SafeScript(`__templ_newChart_ff09`),
-		CallInline: templ.SafeScriptInline(`__templ_newChart_ff09`),
+		Call:       templ.SafeScript(`__templ_newChart_d9bf`),
+		CallInline: templ.SafeScriptInline(`__templ_newChart_d9bf`),
 	}
 }

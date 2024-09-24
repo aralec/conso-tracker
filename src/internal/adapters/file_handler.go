@@ -1,7 +1,7 @@
 package adapters
 
 import (
-	"conso-tracker/src/external/components/modal"
+	"conso-tracker/src/external/views"
 	"net/http"
 )
 
@@ -13,8 +13,8 @@ func NewFileHandler() *FileHandler {
 
 // Importer TODO : importer un .csv
 func (fh *FileHandler) Importer(w http.ResponseWriter, r *http.Request) {
-	modal := modal.NewModal("Test")
-	modal.Component().Render(r.Context(), w)
+	modal := views.ImportModal()
+	modal.Render(r.Context(), w)
 }
 
 // TODO : Créer un service de transformation des données en chart

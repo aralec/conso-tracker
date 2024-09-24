@@ -1,0 +1,12 @@
+package views
+
+import "conso-tracker/src/external/components/modal"
+import "conso-tracker/src/external/components/file-upload"
+
+templ ImportModal() {
+    @modal.Modal{Title: "Importer", Active: true}.Component() {
+        <p>Test</p>
+        @fileupload.FileUpload()
+        <p>End</p>
+    }
+}

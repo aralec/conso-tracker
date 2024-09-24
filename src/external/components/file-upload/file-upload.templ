@@ -1,0 +1,28 @@
+package fileupload
+
+templ FileUpload() {
+    <div id="file-upload-component" class="file has-name">
+        <label class="file-label">
+            <input id="file-input" class="file-input" type="file" name="resume"/>
+            <span class="file-cta">
+                <span class="file-icon">
+                    <i class="fas fa-upload"></i>
+                </span>
+                <span class="file-label">Sélectionnez un fichier</span>
+            </span>
+            <span class="file-name">Aucun fichier importé</span>
+        </label>
+    </div>
+    @initFileUploader()
+}
+
+script initFileUploader() {
+    const uploader = htmx.find('#file-upload-component');
+    const fileInput = htmx.find('#file-input');
+    fileInput.onchange = (event) => {
+        if (fileInput.files.length > 0) {
+            const fileName = htmx.find(uploader, '.file-name');
+            fileName.textContent = fileInput.files[0].name;
+        }
+    };
+}
