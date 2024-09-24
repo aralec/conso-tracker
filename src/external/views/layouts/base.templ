@@ -4,6 +4,11 @@ import "conso-tracker/src/external/components/navigation"
 
 templ Base() {
     @navigation.Navigation()
+
+    <!-- Ancre modale -->
+    <div id="modal-component-anchor" class="is-hidden"></div>
+
+    <!-- Contenu de la page -->
     <div class="mt-6 container is-fluid">
         { children... }
     </div>

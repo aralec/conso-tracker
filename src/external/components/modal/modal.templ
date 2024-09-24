@@ -1,0 +1,31 @@
+package modal
+
+templ (m Modal) Component() {
+    <div
+        id="modal-component-anchor" 
+        class={ "modal", templ.KV("is-active", m.Active) }
+        onclick={ closeModal() }
+    >
+        <div class="modal-background" onclick={ closeModal() }></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">{ m.Title }</p>
+                <button class="delete" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+               { children... }
+            </section>
+            <footer class="modal-card-foot">
+            <div class="buttons">
+                <button class="button is-success">Save changes</button>
+                <button class="button" onclick={ closeModal() }>Cancel</button>
+            </div>
+            </footer>
+        </div>
+    </div>
+}
+
+script closeModal() {
+    const modal = htmx.find("#modal-component-anchor");
+    htmx.removeClass(modal, "is-active", 500);
+}

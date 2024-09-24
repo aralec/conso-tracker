@@ -1,4 +1,4 @@
-package components
+package linechart
 
 // Chart Graphique chart.js
 type Chart struct {
