@@ -12,7 +12,7 @@ templ (c Chart) Component() {
 // newChart renders the <script> tag that will be used to display the Chart.js visual.
 // The code within the brackets is JS.
 script newChart() {
-    const chartData = JSON.parse(document.getElementById('chart-data').textContent);
-    const ctx = document.getElementById(chartData.elementID);
+    const chartData = JSON.parse(htmx.find('#chart-data').textContent);
+    const ctx = htmx.find(chartData.elementID);
     new Chart(ctx, chartData.data);
 }
