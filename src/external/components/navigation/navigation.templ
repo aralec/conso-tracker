@@ -13,7 +13,13 @@ templ Navigation() {
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">Fichier</a>
                     <div class="navbar-dropdown">
-                        <a class="navbar-item">
+                        <a 
+                            class="navbar-item"
+                            hx-get="/importer"
+                            hx-target="#main-content"
+                            hx-trigger="click"
+                            hx-swap="outerHTML transition:true swap:100"
+                        >
                             <i class="iconoir-page-plus"></i>
                             Importer
                         </a>

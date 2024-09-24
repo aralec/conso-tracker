@@ -1,7 +1,7 @@
 package render
 
 import (
-	"conso-tracker/src/internal/adapters/rendering-handlers"
+	"conso-tracker/src/internal/adapters"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
@@ -13,8 +13,11 @@ func GetRenderingMux() *chi.Mux {
 	r.Use(middleware.Logger)
 	r.Use(middleware.Recoverer)
 
-	homeHandler := rendering.NewHomeHandler()
-	r.Get("/drop-file", homeHandler.Home)
+	homeHandler := adapters.NewHomeHandler()
+	r.Get("/home", homeHandler.Home)
+
+	fileHandler := adapters.NewFileHandler()
+	r.Get("/importer", fileHandler.Importer)
 
 	return r
 }
