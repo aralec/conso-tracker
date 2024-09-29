@@ -16,8 +16,16 @@ templ (m Modal) Component() {
             </section>
             <footer class="modal-card-foot">
                 <div class="buttons">
-                    <button class="button is-success">Enregistrer</button>
-                    <button class="button" onclick={ closeModal() }>Annuler</button>
+                    if m.CancelAction != nil  {
+                        @renderModalAction(m.CancelAction)
+                    } else {
+                        <button class="button" onclick={ closeModal() }>Annuler</button>
+                    }
+                    if m.ConfirmAction != nil {
+                        @renderModalAction(m.ConfirmAction)
+                    } else {
+                        <button class="button is-success" onclick={ closeModal() }>Confirmer</button>
+                    }
                 </div>
             </footer>
         </div>

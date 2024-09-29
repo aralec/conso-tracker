@@ -1,0 +1,38 @@
+package modal
+
+import "net/http"
+
+templ renderModalAction(ma *ModalAction) {
+    <button
+        if ma.Classes != "" {
+            class={ma.Classes}
+        } else {
+                class="button is-pulled-right"
+        }
+
+        hx-target={ma.HxTarget}
+        hx-swap={ma.HxSwap}
+        hx-trigger={ma.HxTrigger}
+
+        if ma.HxInclude != "" {
+            hx-include={ma.HxInclude}
+        }
+
+        if ma.HTTPMethod == http.MethodPost {
+            hx-post={ma.HxURL}
+        }
+        if ma.HTTPMethod == http.MethodGet {
+            hx-get={ma.HxURL}
+        }
+        if ma.HTTPMethod == http.MethodPut {
+            hx-put={ma.HxURL}
+        }
+        if ma.HTTPMethod == http.MethodDelete {
+            hx-delete={ma.HxURL}
+        }
+        if ma.HTTPMethod == http.MethodPatch {
+            hx-patch={ma.HxURL}
+        }
+        onclick={ closeModal() }
+    >{ma.Label}</button>
+}

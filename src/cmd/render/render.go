@@ -14,10 +14,11 @@ func GetRenderingMux() *chi.Mux {
 	r.Use(middleware.Recoverer)
 
 	homeHandler := adapters.NewHomeHandler()
-	r.Get("/home", homeHandler.Home)
+	r.Get("/home", homeHandler.RenderHome)
 
 	fileHandler := adapters.NewFileHandler()
-	r.Get("/importer", fileHandler.Importer)
+	r.Get("/import-modal", fileHandler.RenderImportModal)
+	r.Post("/file", fileHandler.UploadFile)
 
 	return r
 }

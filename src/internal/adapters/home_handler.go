@@ -11,7 +11,8 @@ func NewHomeHandler() *HomeHandler {
 	return &HomeHandler{}
 }
 
-func (h *HomeHandler) Home(w http.ResponseWriter, r *http.Request) {
+// RenderHome is a handler for the home page template
+func (h *HomeHandler) RenderHome(w http.ResponseWriter, r *http.Request) {
 	home := views.Home()
 	home.Render(r.Context(), w)
 }

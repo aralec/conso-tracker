@@ -8,9 +8,18 @@ package views
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
-import "conso-tracker/src/external/components/modal"
-import "conso-tracker/src/external/components/file-upload"
+import (
+	"conso-tracker/src/external/components/file-upload"
+	"conso-tracker/src/external/components/modal"
+	"fmt"
+	"net/http"
+)
 
+var formID string = "file-import-form"
+
+func getFormID() string { return fmt.Sprintf("#%s", formID) }
+
+// ImportModal is the modal for importing CSV file.
 func ImportModal() templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
@@ -41,7 +50,20 @@ func ImportModal() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p>Test</p>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<form id=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var3 string
+			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(formID)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `src/external/views/import-modal.templ`, Line: 31, Col: 24}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><p>Veuillez importer un fichier CSV</p>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -49,13 +71,25 @@ func ImportModal() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" <p>End</p>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</form>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			return templ_7745c5c3_Err
 		})
-		templ_7745c5c3_Err = modal.Modal{Title: "Importer", Active: true}.Component().Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = modal.Modal{Title: "Importer",
+			Active: true,
+			ConfirmAction: &modal.ModalAction{
+				Label:      "Importer",
+				Classes:    "button is-primary",
+				HxTarget:   "#main-content",
+				HxInclude:  getFormID(),
+				HxTrigger:  "click",
+				HxSwap:     "outerHTML transition:true swap:100",
+				HxURL:      "/file",
+				HTTPMethod: http.MethodPost,
+			},
+		}.Component().Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

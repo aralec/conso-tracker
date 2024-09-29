@@ -1,12 +1,36 @@
 package views
 
-import "conso-tracker/src/external/components/modal"
-import "conso-tracker/src/external/components/file-upload"
+import (
+    "conso-tracker/src/external/components/file-upload"
+    "conso-tracker/src/external/components/modal"
+    "net/http"
+	"fmt"
+)
 
+
+var formID string = "file-import-form"
+
+func getFormID() string { return fmt.Sprintf("#%s", formID) }
+
+
+// ImportModal is the modal for importing CSV file.
 templ ImportModal() {
-    @modal.Modal{Title: "Importer", Active: true}.Component() {
-        <p>Test</p>
-        @fileupload.FileUpload()
-        <p>End</p>
+    @modal.Modal{Title: "Importer", 
+        Active:        true,
+        ConfirmAction: &modal.ModalAction{
+            Label:      "Importer", 
+            Classes:    "button is-primary",
+            HxTarget:   "#main-content", 
+            HxInclude:  getFormID(),
+            HxTrigger:  "click",
+            HxSwap:     "outerHTML transition:true swap:100", 
+            HxURL:      "/file", 
+            HTTPMethod: http.MethodPost,
+        },
+    }.Component() {
+        <form id={formID}>
+            <p>Veuillez importer un fichier CSV</p>
+            @fileupload.FileUpload()
+        </form>
     }
 }
