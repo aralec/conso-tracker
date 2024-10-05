@@ -24,7 +24,8 @@ templ ImportModal() {
             HxInclude:  getFormID(),
             HxTrigger:  "click",
             HxSwap:     "outerHTML transition:true swap:100", 
-            HxURL:      "/file", 
+            HxURL:      "/file",
+            HxEncoding: "multipart/form-data",
             HTTPMethod: http.MethodPost,
         },
     }.Component() {

@@ -9,5 +9,6 @@ type ModalAction struct {
 	HxTrigger  string `json:"hx-trigger"`
 	HxSwap     string `json:"hx-swap"`
 	HxURL      string `json:"hx-url"`
+	HxEncoding string `json:"hx-encoding"`
 	HTTPMethod string `json:"http-method"`
 }

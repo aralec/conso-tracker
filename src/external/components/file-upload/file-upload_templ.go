@@ -40,19 +40,17 @@ func FileUpload() templ.Component {
 
 func initFileUploader() templ.ComponentScript {
 	return templ.ComponentScript{
-		Name: `__templ_initFileUploader_bdb5`,
-		Function: `function __templ_initFileUploader_bdb5(){const uploader = htmx.find('#file-upload-component');
+		Name: `__templ_initFileUploader_3f13`,
+		Function: `function __templ_initFileUploader_3f13(){const uploader = htmx.find('#file-upload-component');
     const fileInput = htmx.find('#file-input');
     fileInput.onchange = (event) => {
-        console.log('File uploaded', event);
-        console.log('File input files', fileInput.files);
         if (fileInput.files.length > 0) {
             const fileName = htmx.find(uploader, '.file-name');
             fileName.textContent = fileInput.files[0].name;
         }
     };
 }`,
-		Call:       templ.SafeScript(`__templ_initFileUploader_bdb5`),
-		CallInline: templ.SafeScriptInline(`__templ_initFileUploader_bdb5`),
+		Call:       templ.SafeScript(`__templ_initFileUploader_3f13`),
+		CallInline: templ.SafeScriptInline(`__templ_initFileUploader_3f13`),
 	}
 }

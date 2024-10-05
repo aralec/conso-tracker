@@ -17,6 +17,9 @@ templ renderModalAction(ma *ModalAction) {
         if ma.HxInclude != "" {
             hx-include={ma.HxInclude}
         }
+        if ma.HxEncoding != "" {
+            hx-encoding={ma.HxEncoding}
+        }
 
         if ma.HTTPMethod == http.MethodPost {
             hx-post={ma.HxURL}
