@@ -8,7 +8,7 @@ package fileupload
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
-func FileUpload() templ.Component {
+func FileUpload(acceptedMimeTypes string) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
@@ -26,7 +26,30 @@ func FileUpload() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div id=\"file-upload-component\" class=\"file has-name\"><label class=\"file-label\"><input id=\"file-input\" class=\"file-input\" type=\"file\" name=\"file\"> <span class=\"file-cta\"><span class=\"file-icon\"><i class=\"iconoir-upload\"></i></span> <span class=\"file-label\">Sélectionnez un fichier</span></span> <span class=\"file-name\">Aucun fichier importé</span></label></div>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div id=\"file-upload-component\" class=\"file has-name\"><label class=\"file-label\"><input id=\"file-input\" class=\"file-input\" type=\"file\" name=\"file\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		if acceptedMimeTypes != "" {
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" accept=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var2 string
+			templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(acceptedMimeTypes)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `src/external/components/file-upload/file-upload.templ`, Line: 12, Col: 45}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("> <span class=\"file-cta\"><span class=\"file-icon\"><i class=\"iconoir-upload\"></i></span> <span class=\"file-label\">Sélectionnez un fichier</span></span> <span class=\"file-name\">Aucun fichier importé</span></label></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

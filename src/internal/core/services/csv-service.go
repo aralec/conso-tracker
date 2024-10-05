@@ -20,12 +20,12 @@ func (cs *CsvService) ExtractData(file multipart.File) {
 	// En-têtes du fichier :
 	headers, err := reader.Read()
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println("Error while reading file :", err)
 		return
 	}
 
 	// Afficher les en-têtes
-	fmt.Println(headers)
+	fmt.Println("\n\nHeaders are :\n", headers)
 
 	// Lire les données du fichier
 	var data []map[string]string
@@ -36,7 +36,7 @@ func (cs *CsvService) ExtractData(file multipart.File) {
 			break
 		}
 		if err != nil {
-			fmt.Println(err)
+			fmt.Println("Error while reading line : ", err)
 			return
 		}
 
