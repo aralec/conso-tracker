@@ -31,7 +31,7 @@ templ ImportModal() {
     }.Component() {
         <form id={formID}>
             <p>Veuillez importer un fichier CSV</p>
-            @fileupload.FileUpload()
+            @fileupload.FileUpload(".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel")
         </form>
     }
 }

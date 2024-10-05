@@ -1,9 +1,17 @@
 package fileupload
 
-templ FileUpload() {
+templ FileUpload(acceptedMimeTypes string) {
     <div id="file-upload-component" class="file has-name">
         <label class="file-label">
-            <input id="file-input" class="file-input" type="file" name="file"/>
+            <input 
+                id="file-input"
+                class="file-input"
+                type="file"
+                name="file"
+                if (acceptedMimeTypes.length != "") {
+                    accept={acceptedMimeTypes}
+                }
+            />
             <span class="file-cta">
                 <span class="file-icon"><i class="iconoir-upload"></i></span>
                 <span class="file-label">Sélectionnez un fichier</span>
