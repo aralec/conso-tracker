@@ -6,5 +6,5 @@ import (
 )
 
 type PuissanceProcessor interface {
-	ProcessChart(file multipart.File) linechart.Chart
+	ProcessChart(file multipart.File) (*linechart.Chart, error)
 }

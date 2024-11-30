@@ -13,11 +13,13 @@ func NewPuissanceService() *PuissanceService {
 	return &PuissanceService{NewCsvService()}
 }
 
-func (ps *PuissanceService) ProcessChart(file multipart.File) linechart.Chart {
+func (ps *PuissanceService) ProcessChart(file multipart.File) (*linechart.Chart, error) {
+	err := ps.csvService.ExtractData(file)
+	if err != nil {
+		return nil, err
+	}
 
-	ps.csvService.ExtractData(file)
-
-	return linechart.Chart{}
+	return &linechart.Chart{}, nil
 }
 
 /*
